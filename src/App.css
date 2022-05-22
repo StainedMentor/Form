@@ -7,9 +7,6 @@
   pointer-events: none;
 }
 
-
-
-
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
@@ -23,4 +20,10 @@
 
 .App-link {
   color: #61dafb;
+}
+.drop-area {
+  height: 50px;
+  width:200px;
+  background-color: white;
+
 }

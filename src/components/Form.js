@@ -1,5 +1,6 @@
 import Cargo from "./Cargo"
 import Calendar from "./Calendar"
+import FileInput from "./FileInput"
 const Form = ({title}) => {
 
   return (
@@ -8,22 +9,23 @@ const Form = ({title}) => {
       <form>
         <label htmlFor="from">Origin:</label><br/>
         <input type="text" id="from" name="from" required/><br/>
+
         <label htmlFor="to">Destination:</label><br/>
         <input type="text" id="to" name="to" required/><br/>
-        <input type="radio" id="A380" name="planeType" value="A380" required/>
-        <label htmlFor="A380">Airbus A380</label><br/>
-        <input type="radio" id="B747" name="planeType" value="B747" required/>
-        <label htmlFor="B747">Boeing 747</label><br/>
-        <label htmlFor="files">Transport documents:</label><br/>
-        <input type="file" id="files" name="files" multiple accept=".jpg,.png,.doc,.docx,.pdf"/>
+
+        <label htmlFor="planeType">Plane type:</label>
+        <select  id="planeType" name="planeType">
+          <option value="A380">Airbus A380</option>
+          <option value="B747">Boeing 747</option>
+        </select><br/>
+
+      
+        <FileInput/>
         <Calendar/>
         <Cargo/>
 
-
         <input type="submit" value="Submit"/>
-
       </form>
-
     </div>
   )
 }
