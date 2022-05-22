@@ -21,9 +21,13 @@
 .App-link {
   color: #61dafb;
 }
-.drop-area {
+.Drop-area {
   height: 50px;
   width:200px;
   background-color: white;
+
+}
+.Cargo-container {
+  background-color: #232945;
 
 }

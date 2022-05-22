@@ -1,8 +1,14 @@
 import Cargo from "./Cargo"
 import Calendar from "./Calendar"
 import FileInput from "./FileInput"
+import React from "react"
 const Form = ({title}) => {
+  const [cargo, setCargo] = React.useState([]);
 
+  const addCargo = () => {
+    setCargo([...cargo, <Cargo key={cargo.length}/>])
+
+  }
   return (
     <div>
       <h2>{title}</h2>
@@ -19,13 +25,17 @@ const Form = ({title}) => {
           <option value="B747">Boeing 747</option>
         </select><br/>
 
-      
+
         <FileInput/>
         <Calendar/>
-        <Cargo/>
+        <div id="cargoSpace">
+          {cargo}
+          <button type="button" id="moreCargo" onClick={()=>addCargo()}>Add cargo</button>
 
+        </div>
         <input type="submit" value="Submit"/>
       </form>
+
     </div>
   )
 }

@@ -2,7 +2,7 @@
 const Cargo = () => {
 
   return (
-    <div>
+    <div className="Cargo-container">
       <label htmlFor="name">Name:</label><br/>
       <input type="text" id="name" name="name" required/><br/>
       <label htmlFor="wheight">Weight:</label><br/>

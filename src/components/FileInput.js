@@ -11,7 +11,7 @@ const FileInput = () => {
     <div>
       <label htmlFor="files">Transport documents:</label><br/>
       <input type="file" id="files" name="files" multiple accept=".jpg,.png,.doc,.docx,.pdf"/>
-      <div className="drop-area" onDragEnter={(e) =>prevent(e)} onDragOver={(e) =>prevent(e)} onDrop={(e) => drop(e)}/>
+      <div className="Drop-area" onDragEnter={(e) =>prevent(e)} onDragOver={(e) =>prevent(e)} onDrop={(e) => drop(e)}/>
     </div>
 
   )
