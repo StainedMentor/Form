@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -12,8 +12,8 @@
   min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -21,13 +21,49 @@
 .App-link {
   color: #61dafb;
 }
+.App-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin:  10px;
+}
+.Form-element {
+display:block;
+  width:100%;
+  margin:2px;
+  height:calc(10px + 2vmin);
+}
+.Form-spacer {
+  margin-bottom: 10px;
+}
+
 .Drop-area {
-  height: 50px;
-  width:200px;
+  display:block;
+  height:calc(15px + 2vmin);
+  width:100%;
   background-color: white;
+  border:1px solid black;
+  color: black;
 
 }
+.Drop-text {
+  text-align: center;
+  margin:auto;
+}
 .Cargo-container {
+  display:flex;
+  flex-direction: column;
   background-color: #232945;
+  border:1px solid black;
+  margin:3px;
+}
+.Cargo-container > label,input, div {
+  margin: 3px;
+}
+@media only screen and (max-width: 600px) {
+  .Drop-area {
+    display:none;
+
+  }
 
 }

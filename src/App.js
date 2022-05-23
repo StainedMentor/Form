@@ -6,10 +6,9 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-      <Form title="Shipment" className="App-form">
+      <Form title="Shipment">
       </Form>
       </header>
-
     </div>
   );
 }

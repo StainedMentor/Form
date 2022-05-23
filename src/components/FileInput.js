@@ -8,10 +8,12 @@ const FileInput = () => {
     e.preventDefault();
   };
   return(
-    <div>
-      <label htmlFor="files">Transport documents:</label><br/>
-      <input type="file" id="files" name="files" multiple accept=".jpg,.png,.doc,.docx,.pdf"/>
-      <div className="Drop-area" onDragEnter={(e) =>prevent(e)} onDragOver={(e) =>prevent(e)} onDrop={(e) => drop(e)}/>
+    <div className="Form-spacer">
+      <label className="Form-element" htmlFor="files">Transport documents:</label>
+      <input className="Form-element" type="file" id="files" name="files" multiple accept=".jpg,.png,.doc,.docx,.pdf"/>
+      <div className="Drop-area" onDragEnter={(e) =>prevent(e)} onDragOver={(e) =>prevent(e)} onDrop={(e) => drop(e)}>
+        <p className="Drop-text">Drop here</p>
+      </div>
     </div>
 
   )
