@@ -2,8 +2,12 @@ import Cargo from "./Cargo"
 import Calendar from "./Calendar"
 import FileInput from "./FileInput"
 import React from "react"
+
+
 const Form = ({title}) => {
   const [cargo, setCargo] = React.useState([])
+  //const [feedback, setFeedback] = React.useState(1)
+
   var limit = 35
 
   const addCargo = () => {
@@ -11,9 +15,9 @@ const Form = ({title}) => {
   }
   const changePlane = (e) => {
     const type = e.target.value
-    console.log(cargo)
     if(type == "A380") limit = 35
     else limit = 38
+
 
   }
   return (
