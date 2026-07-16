@@ -400,6 +400,233 @@ body {
   border: 0;
 }
 
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.3rem;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tab.active {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.section-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.hint.left {
+  text-align: left;
+  margin-top: 0.2rem;
+}
+
+.type-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.85rem 0 0.75rem;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.line-search {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 1rem;
+  background: #fafbfc;
+}
+
+.meta {
+  margin: 0.65rem 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.lines-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.line-row {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+
+.line-row:active {
+  background: #f8fafc;
+}
+
+.line-badge {
+  min-width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+  flex-shrink: 0;
+  padding: 0 0.35rem;
+}
+
+.line-badge.tram {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.line-badge.bus {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.line-badge.trolleybus {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.line-badge.minibus {
+  background: #faf5ff;
+  color: #7e22ce;
+}
+
+.line-copy {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.line-copy strong {
+  font-size: 0.95rem;
+}
+
+.line-copy span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.back-btn {
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+
+.timetable-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+}
+
+.timetable-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.timetable-body {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.direction-block {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+.direction-block h3 {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+}
+
+.depart-group + .depart-group {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line);
+}
+
+.depart-days {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.depart-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.time-chip {
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 0.3rem 0.45rem;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.empty {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 @media (min-width: 600px) {
   .header {
     padding-top: 1.5rem;
