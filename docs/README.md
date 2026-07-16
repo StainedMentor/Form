@@ -1,49 +1,49 @@
 # Prevoz KS — Sarajevo transit planner
 
-Mobile-first web app (Jakdojade-style) for planning public transport trips in Sarajevo.
+Mobile-first web app for planning trips and browsing lines in Sarajevo.
+Deployable via **GitHub Pages** from the `/docs` folder.
 
-## Live demo (GitHub Pages)
+## Live demo
 
-1. Open **Settings → Pages** in this repository.
-2. Set **Source** to **Deploy from branch**.
-3. Choose branch `main` (or this feature branch) and folder **`/docs`**.
-4. Save. After 1–2 minutes your app is at:
+1. **Settings → Pages** in this repository
+2. Source: branch `main` (or this feature branch), folder **`/docs`**
+3. Open `https://<username>.github.io/<repo-name>/`
 
-   `https://<your-username>.github.io/<repo-name>/`
+## Features
 
-## What it does
-
-- Pick **from** and **to** via stop names or street addresses in Sarajevo
-- Use **GPS** for your current location
-- Find the **best public transit routes** (tram, bus, trolleybus, minibus)
-- Show **duration**, **transfers**, step-by-step legs, and a **map**
+- **Planer** — from/to search, GPS, best routes with map
+- **Linije** — live tram / trolleybus / bus / minibus list + timetables
+- Stop search from the official public API (bundled fallback if offline)
 
 ## Data sources
 
-| Data | Provider |
-|------|----------|
-| Route planning | [Transitous](https://transitous.org) MOTIS API (`api.transitous.org`) |
-| Stops & schedules | [Sarajevo GTFS](https://gitlab.com/vekejsn/gtfs-generators) (Ministry of Transport KS) |
-| Address search | [OpenStreetMap Nominatim](https://nominatim.openstreetmap.org) |
+| Purpose | Source |
+|---------|--------|
+| Stops, lines, timetables | [Javni Prevoz KS](https://javniprevozks.ba) public API |
+| Journey planning | [Transitous](https://transitous.org) MOTIS API (built from KS GTFS) |
+| Address search | OpenStreetMap Nominatim |
 | Map tiles | OpenStreetMap |
 
-The official [javniprevozks.ba](https://javniprevozks.ba) API requires authentication and is not used here. Transitous includes the same Sarajevo schedule data in processed GTFS form.
+### Official public endpoints used
+
+```
+GET https://javniprevozks.ba/api/public/lines/stations/locations/list
+GET https://javniprevozks.ba/public-api/public/lines/vehicle-type/{1|2|3|4}/list
+GET https://javniprevozks.ba/api/public/lines/timetables/{lineId}/list
+```
+
+Vehicle types: `1` minibus · `2` bus · `3` trolleybus · `4` tram
+
+Ticket purchase stays in the official [Javni Prevoz KS](https://javniprevozks.ba) app (no public third-party ticket API).
 
 ## Files
 
 ```
 docs/
-  index.html      # App shell
-  styles.css      # Mobile UI
-  app.js          # Search, routing, map
-  data/stops.json # Stop list from GTFS (generated)
-```
-
-## Regenerating stop data
-
-```bash
-curl -L "https://gitlab.com/api/v4/projects/vekejsn%2Fgtfs-generators/packages/generic/sarajevo-gtfs/latest/sarajevo_gtfs.zip" -o /tmp/sarajevo.zip
-python3 scripts/build_stops.py /tmp/sarajevo.zip docs/data/stops.json
+  index.html
+  styles.css
+  app.js
+  data/stops.json   # fallback if live API is down
 ```
 
 ## Local preview
@@ -51,5 +51,3 @@ python3 scripts/build_stops.py /tmp/sarajevo.zip docs/data/stops.json
 ```bash
 cd docs && python3 -m http.server 8080
 ```
-
-Open `http://localhost:8080` on your phone (same Wi‑Fi) or in the browser.
