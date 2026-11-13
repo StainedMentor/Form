@@ -433,59 +433,25 @@ body {
   gap: 1rem;
 }
 
-.pose-actions {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
+/* .panel { display: grid } must not override the HTML hidden attribute */
+.panel[hidden],
+[hidden] {
+  display: none !important;
 }
 
-.pose-btn {
-  margin-top: 0;
+.panel-pose {
+  margin: 0 -1rem;
+  min-height: calc(100dvh - 10rem);
 }
 
-.pose-stop {
-  background: #b91c1c;
-}
-
-.pose-stop:active {
-  background: #991b1b;
-}
-
-.pose-stage {
-  position: relative;
-  margin-top: 0.85rem;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #0f172a;
-  border: 1px solid var(--line);
-}
-
-.pose-stage video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.pose-stage canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.pose-frame {
   display: block;
-}
-
-#pose-status {
-  margin: 0.65rem 0 0;
-}
-
-#pose-meta {
-  margin: 0.55rem 0 0;
+  width: 100%;
+  min-height: calc(100dvh - 10rem);
+  height: 70dvh;
+  border: 0;
+  border-radius: 0;
+  background: #0b1220;
 }
 
 .section-title {

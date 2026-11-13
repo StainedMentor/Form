@@ -1,5 +1,3 @@
-import { initPoseTab, onPoseTabEnter, onPoseTabLeave } from "./pose.js";
-
 const TRANSITOUS_PLAN_URL = "https://api.transitous.org/api/v5/plan";
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 const JPKS_API = "https://javniprevozks.ba/api";
@@ -51,6 +49,8 @@ const els = {
   panelPlanner: document.getElementById("panel-planner"),
   panelLines: document.getElementById("panel-lines"),
   panelPose: document.getElementById("panel-pose"),
+  poseFrame: document.getElementById("pose-frame"),
+  footer: document.querySelector(".footer"),
   linesCard: document.getElementById("lines-card"),
   linesList: document.getElementById("lines-list"),
   linesMeta: document.getElementById("lines-meta"),
@@ -72,7 +72,6 @@ init();
 
 async function init() {
   bindEvents();
-  initPoseTab();
   await Promise.all([loadStops(), loadLines()]);
 }
 
@@ -185,7 +184,7 @@ function bindEvents() {
 }
 
 function switchTab(tabName) {
-  const previousPose = !els.panelPose.hidden;
+  const leavingPose = !els.panelPose.hidden && tabName !== "pose";
   els.panelPlanner.hidden = tabName !== "planner";
   els.panelLines.hidden = tabName !== "lines";
   els.panelPose.hidden = tabName !== "pose";
@@ -202,10 +201,13 @@ function switchTab(tabName) {
     renderLinesList();
   }
 
-  if (tabName === "pose") {
-    void onPoseTabEnter();
-  } else if (previousPose) {
-    onPoseTabLeave();
+  if (els.footer) {
+    els.footer.hidden = tabName === "pose";
+  }
+
+  // Pose Cam is a separate iframe app; reload it when leaving so the camera stops.
+  if (leavingPose && els.poseFrame) {
+    els.poseFrame.src = "./pose-app/";
   }
 }
 
