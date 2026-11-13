@@ -433,6 +433,12 @@ body {
   gap: 1rem;
 }
 
+/* .panel { display: grid } must not override the HTML hidden attribute */
+.panel[hidden],
+[hidden] {
+  display: none !important;
+}
+
 .panel-pose {
   margin: 0 -1rem;
   min-height: calc(100dvh - 10rem);
