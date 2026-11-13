@@ -13,7 +13,7 @@ Deployable via **GitHub Pages** from the `/docs` folder.
 
 - **Planer** — from/to search, GPS, best routes with map
 - **Linije** — live tram / trolleybus / bus / minibus list + timetables
-- **Poza** — in-browser MediaPipe pose estimation on the device camera
+- **Pose** — separate English Pose Cam app (`/docs/pose-app`) embedded in the tab
 - Stop search from the official public API (bundled fallback if offline)
 
 ## Data sources
@@ -44,7 +44,10 @@ docs/
   index.html
   styles.css
   app.js
-  pose.js           # camera + MediaPipe Pose Landmarker
+  pose-app/         # standalone English Pose Cam (iframe)
+    index.html
+    styles.css
+    app.js
   data/stops.json   # fallback if live API is down
 ```
 
