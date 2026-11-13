@@ -13,6 +13,7 @@ Deployable via **GitHub Pages** from the `/docs` folder.
 
 - **Planer** — from/to search, GPS, best routes with map
 - **Linije** — live tram / trolleybus / bus / minibus list + timetables
+- **Poza** — in-browser MediaPipe pose estimation on the device camera
 - Stop search from the official public API (bundled fallback if offline)
 
 ## Data sources
@@ -43,6 +44,7 @@ docs/
   index.html
   styles.css
   app.js
+  pose.js           # camera + MediaPipe Pose Landmarker
   data/stops.json   # fallback if live API is down
 ```
 

@@ -1,3 +1,5 @@
+import { initPoseTab, onPoseTabEnter, onPoseTabLeave } from "./pose.js";
+
 const TRANSITOUS_PLAN_URL = "https://api.transitous.org/api/v5/plan";
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 const JPKS_API = "https://javniprevozks.ba/api";
@@ -48,6 +50,7 @@ const els = {
   mapSection: document.getElementById("map-section"),
   panelPlanner: document.getElementById("panel-planner"),
   panelLines: document.getElementById("panel-lines"),
+  panelPose: document.getElementById("panel-pose"),
   linesCard: document.getElementById("lines-card"),
   linesList: document.getElementById("lines-list"),
   linesMeta: document.getElementById("lines-meta"),
@@ -69,6 +72,7 @@ init();
 
 async function init() {
   bindEvents();
+  initPoseTab();
   await Promise.all([loadStops(), loadLines()]);
 }
 
@@ -181,9 +185,10 @@ function bindEvents() {
 }
 
 function switchTab(tabName) {
-  const isPlanner = tabName === "planner";
-  els.panelPlanner.hidden = !isPlanner;
-  els.panelLines.hidden = isPlanner;
+  const previousPose = !els.panelPose.hidden;
+  els.panelPlanner.hidden = tabName !== "planner";
+  els.panelLines.hidden = tabName !== "lines";
+  els.panelPose.hidden = tabName !== "pose";
 
   document.querySelectorAll(".tab").forEach((tab) => {
     const active = tab.dataset.tab === tabName;
@@ -191,10 +196,16 @@ function switchTab(tabName) {
     tab.setAttribute("aria-selected", String(active));
   });
 
-  if (!isPlanner) {
+  if (tabName === "lines") {
     els.timetableCard.hidden = true;
     els.linesCard.hidden = false;
     renderLinesList();
+  }
+
+  if (tabName === "pose") {
+    void onPoseTabEnter();
+  } else if (previousPose) {
+    onPoseTabLeave();
   }
 }
 

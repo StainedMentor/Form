@@ -402,7 +402,7 @@ body {
 
 .tabs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 0.4rem;
   margin-top: 0.9rem;
   background: rgba(255, 255, 255, 0.65);
@@ -415,8 +415,8 @@ body {
   border: 0;
   background: transparent;
   border-radius: 10px;
-  padding: 0.65rem 0.75rem;
-  font-size: 0.95rem;
+  padding: 0.65rem 0.4rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--muted);
   cursor: pointer;
@@ -431,6 +431,61 @@ body {
 .panel {
   display: grid;
   gap: 1rem;
+}
+
+.pose-actions {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.pose-btn {
+  margin-top: 0;
+}
+
+.pose-stop {
+  background: #b91c1c;
+}
+
+.pose-stop:active {
+  background: #991b1b;
+}
+
+.pose-stage {
+  position: relative;
+  margin-top: 0.85rem;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  border: 1px solid var(--line);
+}
+
+.pose-stage video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pose-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#pose-status {
+  margin: 0.65rem 0 0;
+}
+
+#pose-meta {
+  margin: 0.55rem 0 0;
 }
 
 .section-title {

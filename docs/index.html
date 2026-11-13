@@ -22,6 +22,7 @@
       <nav class="tabs" role="tablist" aria-label="Glavni meni">
         <button type="button" class="tab active" role="tab" aria-selected="true" data-tab="planner">Planer</button>
         <button type="button" class="tab" role="tab" aria-selected="false" data-tab="lines">Linije</button>
+        <button type="button" class="tab" role="tab" aria-selected="false" data-tab="pose">Poza</button>
       </nav>
     </header>
 
@@ -92,6 +93,26 @@
             </div>
           </div>
           <div id="timetable-body" class="timetable-body"></div>
+        </section>
+      </section>
+
+      <section class="panel" id="panel-pose" role="tabpanel" hidden>
+        <section class="card" aria-label="Procjena poza">
+          <h2 class="section-title">Procjena poza</h2>
+          <p class="hint left">
+            Učitava MediaPipe Pose model u pregledniku i prati tijelo na snimci kamere.
+            Podaci ostaju na uređaju.
+          </p>
+          <div class="pose-actions">
+            <button type="button" class="primary-btn pose-btn" id="pose-start-btn">Start kamere</button>
+            <button type="button" class="primary-btn pose-btn pose-stop" id="pose-stop-btn" hidden>Zaustavi</button>
+          </div>
+          <p class="meta" id="pose-meta">Model se učitava tek pri Startu.</p>
+          <p class="status" id="pose-status" hidden></p>
+          <div class="pose-stage">
+            <video id="pose-video" playsinline muted autoplay></video>
+            <canvas id="pose-canvas" aria-label="Pregled kamere s kosturom poza"></canvas>
+          </div>
         </section>
       </section>
     </main>
