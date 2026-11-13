@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b5fff" />
+  <meta name="description" content="Planer javnog prevoza za Sarajevo — rute, linije i redovi vožnje iz Javni Prevoz KS." />
+  <title>Prevoz KS — Sarajevo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">🚋</span>
+        <div>
+          <h1>Prevoz KS</h1>
+          <p>Javni prevoz Sarajevo</p>
+        </div>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Glavni meni">
+        <button type="button" class="tab active" role="tab" aria-selected="true" data-tab="planner">Planer</button>
+        <button type="button" class="tab" role="tab" aria-selected="false" data-tab="lines">Linije</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="panel" id="panel-planner" role="tabpanel">
+        <section class="planner card" aria-label="Planer putovanja">
+          <div class="field-group">
+            <label class="sr-only" for="from-input">Polazište</label>
+            <div class="field from-field">
+              <span class="field-dot from-dot" aria-hidden="true"></span>
+              <input id="from-input" type="search" autocomplete="off" enterkeyhint="search" placeholder="Odakle putujete?" />
+              <button type="button" class="icon-btn" id="locate-btn" title="Moja lokacija" aria-label="Koristi moju lokaciju">📍</button>
+            </div>
+            <button type="button" class="swap-btn" id="swap-btn" aria-label="Zamijeni polazište i odredište">⇅</button>
+            <label class="sr-only" for="to-input">Odredište</label>
+            <div class="field to-field">
+              <span class="field-dot to-dot" aria-hidden="true"></span>
+              <input id="to-input" type="search" autocomplete="off" enterkeyhint="search" placeholder="Kamo idete?" />
+            </div>
+          </div>
+
+          <ul class="suggestions" id="suggestions" hidden></ul>
+
+          <button type="button" class="primary-btn" id="search-btn">Pronađi rutu</button>
+          <p class="hint">Stajališta iz Javni Prevoz KS · rute putem Transitous</p>
+        </section>
+
+        <section class="status card" id="status" hidden></section>
+
+        <section class="results card" id="results" hidden>
+          <div class="results-header">
+            <h2>Predložene rute</h2>
+            <span id="results-count"></span>
+          </div>
+          <div id="routes-list"></div>
+        </section>
+
+        <section class="map-card card" id="map-section" hidden>
+          <h2>Mapa rute</h2>
+          <div id="map" role="img" aria-label="Mapa odabrane rute"></div>
+        </section>
+      </section>
+
+      <section class="panel" id="panel-lines" role="tabpanel" hidden>
+        <section class="card" id="lines-card">
+          <h2 class="section-title">Linije i redovi vožnje</h2>
+          <p class="hint left">Podaci uživo sa javniprevozks.ba</p>
+          <div class="type-filters" id="type-filters">
+            <button type="button" class="chip active" data-type="all">Sve</button>
+            <button type="button" class="chip" data-type="4">Tramvaj</button>
+            <button type="button" class="chip" data-type="3">Trolejbus</button>
+            <button type="button" class="chip" data-type="2">Autobus</button>
+            <button type="button" class="chip" data-type="1">Minibus</button>
+          </div>
+          <label class="sr-only" for="line-search">Pretraži linije</label>
+          <input id="line-search" class="line-search" type="search" placeholder="Traži liniju (npr. 3 ili Ilidža)" autocomplete="off" />
+          <p class="meta" id="lines-meta">Učitavam linije…</p>
+          <div id="lines-list" class="lines-list"></div>
+        </section>
+
+        <section class="card" id="timetable-card" hidden>
+          <button type="button" class="back-btn" id="timetable-back">← Nazad na linije</button>
+          <div class="timetable-header">
+            <span class="line-badge" id="timetable-badge"></span>
+            <div>
+              <h2 id="timetable-title">Red vožnje</h2>
+              <p class="hint left" id="timetable-subtitle"></p>
+            </div>
+          </div>
+          <div id="timetable-body" class="timetable-body"></div>
+        </section>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>
+        Stajališta i linije: <a href="https://javniprevozks.ba" target="_blank" rel="noopener">Javni Prevoz KS</a> ·
+        Rutiranje: <a href="https://transitous.org" target="_blank" rel="noopener">Transitous</a> ·
+        <a href="https://transitous.org/sources/" target="_blank" rel="noopener">Izvori</a> ·
+        Mapa: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+      </p>
+      <p class="disclaimer">
+        Informativnog karaktera. Karte kupujte u službenoj aplikaciji
+        <a href="https://javniprevozks.ba" target="_blank" rel="noopener">Javni Prevoz KS</a>.
+      </p>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
